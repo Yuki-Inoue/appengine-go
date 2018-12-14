@@ -1,5 +1,5 @@
 
-VERSION ?= latest
+VERSION ?= 1.9
 
 build:
 	VERSION=$(VERSION) bin/build.sh
