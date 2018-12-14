@@ -1,0 +1,25 @@
+version: 2
+jobs:
+  build:
+    docker:
+      # any circleci image should be fine.
+      - image: circleci/golang
+    steps:
+      - setup_remote_docker
+      - checkout
+      - run:
+          command: make
+      - run:
+          command: docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
+      - run:
+          command: make push
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only:
+                - master

@@ -1,3 +1,8 @@
 
+VERSION ?= latest
+
 build:
-	bin/build.sh
+	VERSION=$(VERSION) bin/build.sh
+
+push:
+	docker push yukii/appengine-go:$(VERSION)
