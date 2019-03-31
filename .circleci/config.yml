@@ -7,12 +7,9 @@ jobs:
     steps:
       - setup_remote_docker
       - checkout
-      - run:
-          command: make
-      - run:
-          command: docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
-      - run:
-          command: make push
+      - run: make
+      - run: docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
+      - run: make push
 
 workflows:
   version: 2
